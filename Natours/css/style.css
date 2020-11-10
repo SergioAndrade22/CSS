@@ -7,22 +7,33 @@ Dark green: #28b485
 
 */
 
+/* We used rem units, percentage units, and vh/vw units to provide responsiveness and enhances maintainability of the code, optimizing media queries  */
+
+
 /* '*' is called universal selector, will select every element on the page,
     prevents browser from editing our elements. */
-* {
+*,
+*::after,
+*::before {
     margin: 0;
     padding: 0;
-    box-sizing: border-box; /* changes box-model so borders and paddings are no longer added, and preserve total width and height */
+    box-sizing: inherit;
+}
+
+html {
+    font-size: 62.5%; /* Set to 10px only to facilitate calculation for rem unit */
 }
 
 /* We set font on the body to take advantage from property inheritance */
 body {
     font-family: 'Lato', sans-serif;
     font-weight: 400; /* Specifies stroke thickness. The available 'font-weight' is defined by the link referenced on the <head> */
-    font-size: 16px;
+    /* font-size: 16px; */
+    font-size: 1.6rem;
     line-height: 1.7;
     color: #777; 
-    padding: 30px; /* Padding property doesn't get inherited, only gets applied here. */
+    padding: 3rem; /* Padding property doesn't get inherited, only gets applied here. */
+    box-sizing: border-box; /* changes box-model so borders and paddings are no longer added to the width calculation, and preserve total width and height, gets inherited by every children, as marked in the universal selector */
 }
 
 .header {
@@ -42,14 +53,14 @@ body {
         0 100%); /* Bottom-Left corner x:0 y:100% */
 }
 
-.logo-box {
+.header__logo-box {
     position: absolute;
-    top: 3%; /* The position to where it starts counting this pixels, is from the position of a parent container with relative position. */
-    left: 3%;
+    top: 3rem; /* The position to where it starts counting this pixels, is from the position of a parent container with relative position. */
+    left: 3rem;
 }
 
-.logo {
-    height: 35px; /* As we specify the height, the width will be automatically calculated, it is reciprocous for the inverse. */
+.header__logo {
+    height: 3.5rem; /* As we specify the height, the width will be automatically calculated, it is reciprocous for the inverse. */
 }
 
 /* We can had animations to events on elements like this
@@ -58,7 +69,7 @@ body {
 }
 */
 
-.text-box {
+.header__text-box {
     position: absolute;
     text-align: center; /* We center the text inside the box, this way, the <a> button, as defined as inline-block, it is treated as text */
     /* These properties start counting on the top-left corner of the image, thus, 50% won't center the box, these are relative to the parent element */
@@ -71,14 +82,14 @@ body {
     color: #fff;
     text-transform: uppercase;
     backface-visibility: hidden; /* Prevents "shaky" end of the animation because of transformation */
-    margin-bottom: 20px; /* Create space with the <a> button below. */
+    margin-bottom: 2rem; /* Create space with the <a> button below. */
 }
 
-.heading-primary-main {
+.heading-primary--main {
     display: block; /* Block display enforces the element to take all the available space and creates <br> after it */
-    font-size: 60px;
+    font-size: 6rem;
     font-weight: 400; /* We lower the default 'font-weight' for <h1> */
-    letter-spacing: 35px;
+    letter-spacing: 3.5rem;
     animation-name: fadeInLeft; /* Link the property with the custom, or premade, animation */
     animation-duration: 2s;
     animation-timing-function: ease-out; /* Specifies how CSS animation should progress over the duration of each cycle.*/
@@ -91,11 +102,11 @@ body {
     */
 }
 
-.heading-primary-sub {
+.heading-primary--sub {
     display: block;
-    font-size: 20px;
+    font-size: 2rem;
     font-weight: 700;
-    letter-spacing: 17.4px;
+    letter-spacing: 1.75rem;
     animation: fadeInRight 2s ease-out;
     /* 'animation' is a shorthand for these 3 combined
     animation-name: fadeInRight;
@@ -176,22 +187,22 @@ body {
     display: inline-block; /* Works as a normal block model but with the paddings defined below, check text-box.text-alignment for details */
     text-transform: uppercase;
     text-decoration: none; /* Removes the color and the underline default for <a> */
-    padding: 15px 40px; /* Adds top-bottom padding 15px, left-right padding 40px */
-    border-radius: 100px; /* Cuts the edges to make them look rounded */
+    padding: 1.5rem 4rem; /* Adds top-bottom padding 15px, left-right padding 40px */
+    border-radius: 10rem; /* Cuts the edges to make them look rounded */
     transition: all .2s; /* Allows every property to be animated, this always needs to be on the initial state */
 }
 
 .btn:hover {
     transform: translateY(-5%);
-    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4); /* X Y Blur Color*/
+    box-shadow: 0 1.5rem 2.5rem rgba(0, 0, 0, 0.4); /* X Y Blur Color*/
 }
 
 .btn:active {
     transform: translateY(-2%);
-    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 .8rem 1rem rgba(0, 0, 0, 0.6);
 }
 
-.btn-white {
+.btn--white {
     background-color: #fff;
     color: #777;
 }
@@ -203,7 +214,7 @@ body {
     display: inline-block; 
     height: 100%; /* 100% of the parent */
     width: 100%; /* 100% of the parent */
-    border-radius: 100px;
+    border-radius: 10rem;
     z-index: -1; /* Effectively hiddes this element behind the parent*/
     /* Following 3 attributes are used to position the ::after pseudo element on the same place as the actual button */
     position: absolute; 
@@ -215,7 +226,7 @@ body {
 
 /* No need to add 'content' again, as we already did it on .btn::after 
     We use this to se the color for the fade */
-.btn-white::after {
+.btn--white::after {
     background-color: #fff;
 }
 
@@ -225,7 +236,7 @@ body {
     opacity: 0;
 }
 
-.btn-animated {
+.btn--animated {
     animation: fadeInBottom 1s ease-out 1.05s; /* animation-name animation-duration animation-timing-function animation-delay */
     animation-fill-mode: backwards; /* Set the attributes of animation 0% to the element before the animation actually starts */
 }

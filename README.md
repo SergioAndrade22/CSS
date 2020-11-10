@@ -12,3 +12,7 @@
   * Path Intellisense
   * Prettier
   * Terminal
+
+## Arquitecture:
+  * BEM Strategy for components
+  * 7-1 Pattern for style sheets
