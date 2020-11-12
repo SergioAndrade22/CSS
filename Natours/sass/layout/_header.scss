@@ -5,6 +5,9 @@
     background-size: cover; 
     background-position: top;
     clip-path: polygon(0 0,100% 0,100% 75vh,0 100%);
+    transition: all 1.5s;
+    animation: appearence 2s ease-out .5s;
+    animation-fill-mode: backwards;
     
     &__logo_box{
         position: absolute;

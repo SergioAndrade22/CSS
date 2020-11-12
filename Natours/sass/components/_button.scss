@@ -12,10 +12,7 @@
         padding: 1.5rem 4rem;
         border-radius: 10rem;
     }
-    &:active {
-        transform: translateY(-2%);
-        box-shadow: 0 .8rem 1rem rgba($color-black, 0.6);
-    }
+    
     &:hover {
         transform: translateY(-5%);
         box-shadow: 0 1.5rem 2.5rem rgba($color-black, 0.4);
@@ -24,6 +21,12 @@
             opacity: 0;
         }
     }
+
+    &:active {
+        box-shadow: 0 .8rem 1rem rgba($color-black, 0.6);
+        transform: translateY(0);
+    }
+
     &::after {
         content: "";
         display: inline-block; 
@@ -36,6 +39,7 @@
         left: 0;
         transition: all .4s;
     }
+
     &--white {
         background-color: $color-white;
         color: $color-grey-dark;
@@ -43,6 +47,7 @@
             background-color: $color-white;
         }
     }
+
     &--animated{
         animation: fadeInBottom 1s ease-out 1.05s;
         animation-fill-mode: backwards;
