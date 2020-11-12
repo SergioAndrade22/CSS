@@ -1,0 +1,242 @@
+/*
+COLORS:
+
+Light green: #7ed56f
+Medium green: #55c57a
+Dark green: #28b485
+
+*/
+
+/* We used rem units, percentage units, and vh/vw units to provide responsiveness and enhances maintainability of the code, optimizing media queries  */
+
+
+/* '*' is called universal selector, will select every element on the page,
+    prevents browser from editing our elements. */
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    font-size: 62.5%; /* Set to 10px only to facilitate calculation for rem unit */
+}
+
+/* We set font on the body to take advantage from property inheritance */
+body {
+    font-family: 'Lato', sans-serif;
+    font-weight: 400; /* Specifies stroke thickness. The available 'font-weight' is defined by the link referenced on the <head> */
+    /* font-size: 16px; */
+    font-size: 1.6rem;
+    line-height: 1.7;
+    color: #777; 
+    padding: 3rem; /* Padding property doesn't get inherited, only gets applied here. */
+    box-sizing: border-box; /* changes box-model so borders and paddings are no longer added to the width calculation, and preserve total width and height, gets inherited by every children, as marked in the universal selector */
+}
+
+.header {
+    position: relative; /* This property is added to compliant with the logo-box absolute positioning */
+    height: 95vh; /* Set height of every part of the element to be 95% of viewport(v) height(h)*/
+    background-image: linear-gradient( /* We also use this property to include gradients */
+            to right bottom, /* 'to right bottom' set gradient orientation left-right and top-bottom */
+            rgba(126, 213, 111, 0.8), /* Using rgba, and lowering opacity allows the img on the back to be seen */
+            rgba(40, 180, 133, 0.8)), 
+            url(../img/hero.jpg); /* Having gradient before image, sets it up on top of it */
+    background-size: cover; /* Cover tries to always fit the element to the viewport */
+    background-position: top; /* Ensures that, regardless of the viewport, the images always stays on top of the viewport */
+    clip-path: polygon( /* Each coordinate should be noted clockwise, make it automatically with https://bennettfeely.com/clippy/ */
+        0 0, /* Top-Left corner x:0 y: 0 */
+        100% 0, /* Top-Right corner x:100% y:0 */
+        100% 75vh, /* Cut Bottom-Left corner x:100% y:75vh */
+        0 100%); /* Bottom-Left corner x:0 y:100% */
+}
+
+.header__logo-box {
+    position: absolute;
+    top: 3rem; /* The position to where it starts counting this pixels, is from the position of a parent container with relative position. */
+    left: 3rem;
+}
+
+.header__logo {
+    height: 3.5rem; /* As we specify the height, the width will be automatically calculated, it is reciprocous for the inverse. */
+}
+
+/* We can had animations to events on elements like this
+.logo:hover{
+    animation: fadeInRight 2s ease-out;
+}
+*/
+
+.header__text-box {
+    position: absolute;
+    text-align: center; /* We center the text inside the box, this way, the <a> button, as defined as inline-block, it is treated as text */
+    /* These properties start counting on the top-left corner of the image, thus, 50% won't center the box, these are relative to the parent element */
+    top: 40%; /* Decided to take it 10% up, just to convey with the cut bottom edge */
+    left: 50%;
+    transform: translate(-50%, -50%); /* This shifts relativness of the box, moves it 50% of it width to the left, and 50% of its width to the top */
+}
+
+.heading-primary {
+    color: #fff;
+    text-transform: uppercase;
+    backface-visibility: hidden; /* Prevents "shaky" end of the animation because of transformation */
+    margin-bottom: 2rem; /* Create space with the <a> button below. */
+}
+
+.heading-primary--main {
+    display: block; /* Block display enforces the element to take all the available space and creates <br> after it */
+    font-size: 6rem;
+    font-weight: 400; /* We lower the default 'font-weight' for <h1> */
+    letter-spacing: 3.5rem;
+    animation-name: fadeInLeft; /* Link the property with the custom, or premade, animation */
+    animation-duration: 2s;
+    animation-timing-function: ease-out; /* Specifies how CSS animation should progress over the duration of each cycle.*/
+    /* Waits 3s before playing the animation, note that the element opacity remains as normal until animation starts, thus change opacity as well
+    animation-delay: 3s;
+    opacity: 0;
+    */
+    /* Repeats the animation 3 times
+    animation-iteration-count: 3;
+    */
+}
+
+.heading-primary--sub {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.75rem;
+    animation: fadeInRight 2s ease-out;
+    /* 'animation' is a shorthand for these 3 combined
+    animation-name: fadeInRight;
+    animation-duration: 2s;
+    animation-timing-function: ease-out;
+    */
+}
+
+/* This allows you to specify what happens every frame of the animation 
+    Recomended to use only transform and opacity here, as those are optimized on most browsers */
+
+@keyframes fadeInLeft {
+    0%{ /* Before the actual animation starts */
+        opacity: 0; /* Makes element invisible */
+        transform: translateX(-25%); /* Shifts element 25% to the left of its original position */
+    }
+
+    40%{
+        opacity: 0.4;
+        transform: rotate(180deg);
+    }
+
+    80%{
+        opacity: 0.8;
+        transform: translateX(2%) ; /* Shifts element 10% to the right of its original position */;
+    }
+
+    100%{ /* When the animation finishes */
+        opacity: 1; /* Makes element completely visible */
+        transform: translate(0); /* This makes it look the same it looks before any change */
+    }
+}
+
+@keyframes fadeInRight {
+    0%{
+        opacity: 0;
+        transform: translateX(25%);
+    }
+
+    40%{
+        opacity: 0.4;
+        transform: scaleY(-1) rotate(180deg);
+    }
+
+    80%{
+        opacity: 0.8;
+        transform: translateX(-2%);
+    }
+
+    100%{
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@keyframes fadeInBottom {
+    0%{
+        opacity: 0;
+        transform: translateY(100%);
+    }
+
+    80%{
+        opacity: 0.8;
+        transform: translateY(-8%);
+    }
+
+    100%{
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+/* link and visited are psuedo classes, that are special states of a selector, we use them to style elements on particular situations 
+    we had the :visited pseudo class to prevent default browser behaviour and have the same behaviour on any case */
+.btn:link,
+.btn:visited {
+    position: relative; /* Position set to relative to allow hidding the ::after pseudo element */
+    display: inline-block; /* Works as a normal block model but with the paddings defined below, check text-box.text-alignment for details */
+    text-transform: uppercase;
+    text-decoration: none; /* Removes the color and the underline default for <a> */
+    padding: 1.5rem 4rem; /* Adds top-bottom padding 15px, left-right padding 40px */
+    border-radius: 10rem; /* Cuts the edges to make them look rounded */
+    transition: all .2s; /* Allows every property to be animated, this always needs to be on the initial state */
+}
+
+.btn:hover {
+    transform: translateY(-5%);
+    box-shadow: 0 1.5rem 2.5rem rgba(0, 0, 0, 0.4); /* X Y Blur Color*/
+}
+
+.btn:active {
+    transform: translateY(-2%);
+    box-shadow: 0 .8rem 1rem rgba(0, 0, 0, 0.6);
+}
+
+.btn--white {
+    background-color: #fff;
+    color: #777;
+}
+
+/* Renders an element on the actual element, that needs to look the same as the parent */
+/* The pseudo element is treated as the child of the element before it */
+.btn::after {
+    content: ""; /* Necessary for the pseudo element 'after' to be rendered, even if empty */
+    display: inline-block; 
+    height: 100%; /* 100% of the parent */
+    width: 100%; /* 100% of the parent */
+    border-radius: 10rem;
+    z-index: -1; /* Effectively hiddes this element behind the parent*/
+    /* Following 3 attributes are used to position the ::after pseudo element on the same place as the actual button */
+    position: absolute; 
+    top: 0;
+    left: 0;
+    transition: all .4s; /* Set the initial state of transitions to start */
+}
+
+
+/* No need to add 'content' again, as we already did it on .btn::after 
+    We use this to se the color for the fade */
+.btn--white::after {
+    background-color: #fff;
+}
+
+/* This will represent the last instance of the animation, thus we set opacity to 0 to make the element invisible */
+.btn:hover::after {
+    transform: scaleX(1.4) scaleY(1.6); 
+    opacity: 0;
+}
+
+.btn--animated {
+    animation: fadeInBottom 1s ease-out 1.05s; /* animation-name animation-duration animation-timing-function animation-delay */
+    animation-fill-mode: backwards; /* Set the attributes of animation 0% to the element before the animation actually starts */
+}
