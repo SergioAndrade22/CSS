@@ -24,5 +24,6 @@
   "homepage": "https://github.com/SergioAndrade22/CSS#readme",
   "devDependencies": {
     "node-sass": "^5.0.0"
-  }
+  },
+  "dependencies": {}
 }
