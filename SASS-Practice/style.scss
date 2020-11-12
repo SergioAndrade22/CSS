@@ -1,0 +1,98 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+$color-primary: #f9ed69; // Yellow
+$color-secondary: #f08a5d; // Orange
+$color-terciary: #b83b5e; // Pink
+$color-text-dark: #333; // Dark grey
+$color-text-light: #eee; // White
+
+$button-width: 150px;
+
+// A Mixin is like a module you can use on multiple places of the code.
+@mixin clearfix{
+// This code fixes the background color hidding, called "clearfix"
+  &::after { 
+    content: "";
+    clear: both;
+    display: table;
+  }
+}
+
+// A mixin can have arguments.
+@mixin style-link-text($color) {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: $color;
+}
+
+// We can define new functions
+@function divide($a, $b) {
+  @return $a / $b;
+}
+
+nav {
+  margin: divide(60, 2) * 1px;
+  background-color: $color-primary;
+  
+  // This line includes the clearfix mixin
+  @include clearfix;
+}
+
+.navigation {
+  list-style: none;
+  float: left;
+  
+  li {
+    display: inline-block;
+    margin-left: 30px;
+    
+// '&' return navigation path until current point    
+    &:first-child {
+      margin:0;
+    }
+    
+    a:link {
+      @include style-link-text($color-text-dark);
+    }
+  }
+}
+
+.buttons {
+  float: right;
+}
+
+// We can define 'templates' holding several attributes, latter to be extended by selectors.
+// if we use this tool, the selector is used in place of 'btn-placeholder' to compile css, wether mixins copy the code on each @include call
+%btn-placeholder {
+  padding: 10px;
+  display: inline-block;
+  text-align: center;
+  border-radius: 100px;
+  width: $button-width;
+  @include style-link-text($color-text-light);
+}
+
+.btn-main {
+  &:link{
+    background-color: $color-secondary;
+    @extend %btn-placeholder;
+  }
+  
+  &:hover{
+    background-color: darken($color-secondary, 15%);
+  }
+}
+
+.btn-hot {
+  &:link{
+    background-color: $color-terciary;  
+    @extend %btn-placeholder;
+  }
+  
+  &:hover{
+    background-color: lighten($color-terciary, 15%);
+  }
+}
