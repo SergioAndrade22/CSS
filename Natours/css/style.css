@@ -62,6 +62,12 @@ body {
   100% {
     opacity: 1; } }
 
+@keyframes appearRotation {
+  0% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(360deg); } }
+
 body {
   font-family: 'Lato', sans-serif;
   font-weight: 400;
@@ -203,7 +209,11 @@ body {
     left: 3rem; }
   .header__logo {
     height: 4.5rem;
-    margin: 2.8rem; }
+    margin: 2.8rem;
+    -webkit-animation: rotate 5s normal linear infinite;
+    transition: all 1.5s;
+    animation: appearence 3.15s ease-out 1.5s, appearRotation 1.5s ease-out 1.15s;
+    animation-fill-mode: backwards; }
   .header__text-box {
     position: absolute;
     text-align: center;

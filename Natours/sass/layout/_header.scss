@@ -18,6 +18,10 @@
     &__logo{
         height: 4.5rem;
         margin: 2.8rem;
+        -webkit-animation: rotate 5s normal linear infinite;
+        transition: all 1.5s;
+        animation: appearence 3.15s ease-out 1.5s, appearRotation 1.5s ease-out 1.15s;
+        animation-fill-mode: backwards;
     }
 
     &__text-box {
