@@ -1,0 +1,7 @@
+@function singleColumnWidth($cant){
+    @return calc((100% - (#{$cant} - 1) * #{$gutter-horizontal}) / #{$cant});
+}
+
+@function multipleColumnOfWidth($cant, $count){
+    @return calc(#{singleColumnWidth($count)} * #{$cant} + (#{$cant - 1}) * #{$gutter-horizontal});
+}

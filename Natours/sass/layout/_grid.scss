@@ -1,0 +1,47 @@
+.row{
+    max-width: $grid-width;
+    background-color: #eee;
+    margin: 0 auto; // This center an element on a block 
+    &:not(:last-child) { // We select, everything but the last child
+        margin-bottom: $gutter-vertical;
+    }
+
+    @include clearfix;
+
+// The [] selector, allows to select based on an attribute.
+// This '^=' means 'that begins with' in this case, every class that begins with 'col-'
+// This '*=' means 'everything that contains'
+// This '$=' means 'that ends with'
+    [class^="col-"]{ 
+        background-color: orangered;
+        float: left;
+
+        &:not(:last-child){
+            margin-right: $gutter-horizontal;
+        }
+    }
+
+    .col-1-of-2 {
+        width: singleColumnWidth(2);
+    }
+
+    .col-1-of-3 {
+        width: singleColumnWidth(3);
+    }
+
+    .col-2-of-3 {
+        width: multipleColumnOfWidth(2, 3);
+    }
+
+    .col-1-of-4 {
+        width: singleColumnWidth(4);
+    }
+
+    .col-2-of-4 {
+        width: multipleColumnOfWidth(2, 4);
+    }
+
+    .col-3-of-4 {
+        width: multipleColumnOfWidth(3, 4);
+    }
+}
