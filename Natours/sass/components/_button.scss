@@ -1,19 +1,16 @@
 %btn-placeholder {
     position: relative;
     display: inline-block;
-    text-transform: uppercase;
     text-decoration: none;
-    padding: 1.5rem 4rem;
-    border-radius: 10rem;
     transition: all .2s;
 }
 
 .btn{
-    &:link {
+    &:link, &:visited {
         @extend %btn-placeholder;
-    }
-    &:visited {
-        @extend %btn-placeholder;
+        text-transform: uppercase;
+        padding: 1.5rem 4rem;
+        border-radius: 10rem;
     }
     &:active {
         transform: translateY(-2%);
@@ -49,5 +46,26 @@
     &--animated{
         animation: fadeInBottom 1s ease-out 1.05s;
         animation-fill-mode: backwards;
+    }
+}
+
+.btn-text{
+    &:link, &:visited {
+        @extend %btn-placeholder;
+        color: $color-primary;
+        border-bottom: 0.2rem solid $color-primary;
+        padding: 0.3rem;
+    }
+
+    &:hover{
+        transform: translateY(-15%);
+        background-color: $color-primary;
+        color: $color-white;
+        box-shadow: 0 1rem 2rem rgba($color-black, 0.6);
+    }
+
+    &:active{
+        box-shadow: 0 1rem 2rem rgba($color-black, 0.4);
+        transform: translateY(0);
     }
 }
