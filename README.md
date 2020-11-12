@@ -1,4 +1,6 @@
-# CSS
+# Advanced-CSS
+  * You can find the old and commented native css on oldNonSass.css file, though it will be outdated
+  * style.css contains the output of all the compiled sass code 
 
 ## VSC Extensions:
   * Auto Close Tag
