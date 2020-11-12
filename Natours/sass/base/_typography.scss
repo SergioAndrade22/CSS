@@ -18,9 +18,8 @@ body{
         font-size: 6rem;
         font-weight: 400;
         letter-spacing: 3.5rem;
-        animation-name: fadeInLeft;
-        animation-duration: 2s;
-        animation-timing-function: ease-out;
+        animation: fadeInLeft 2s ease-out 1s;
+        animation-fill-mode: backwards;
     }
     
     &--sub {
@@ -28,7 +27,8 @@ body{
         font-size: 2rem;
         font-weight: 700;
         letter-spacing: 1.75rem;
-        animation: fadeInRight 2s ease-out;
+        animation: fadeInRight 2s ease-out 1s;
+        animation-fill-mode: backwards;
     }
 }
 
@@ -43,7 +43,7 @@ body{
     color: transparent;
     letter-spacing: .2rem;
     transition: all .25s;
-    backface-visibility: hidden;    
+    backface-visibility: hidden;
 
     &:hover {
         transform: skewY(-10deg) skewX(15deg) scale(1.1);

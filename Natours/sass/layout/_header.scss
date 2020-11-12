@@ -6,7 +6,7 @@
     background-position: top;
     clip-path: polygon(0 0,100% 0,100% 75vh,0 100%);
     transition: all 1.5s;
-    animation: appearence 2s ease-out .5s;
+    animation: appearence 2s ease-out;
     animation-fill-mode: backwards;
     
     &__logo_box{
@@ -15,8 +15,9 @@
         left: 3rem;
     }
 
-    &__log{
-        height: 3.5rem;
+    &__logo{
+        height: 4.5rem;
+        margin: 2.8rem;
     }
 
     &__text-box {

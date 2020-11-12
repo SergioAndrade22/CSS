@@ -80,15 +80,15 @@ body {
     font-size: 6rem;
     font-weight: 400;
     letter-spacing: 3.5rem;
-    animation-name: fadeInLeft;
-    animation-duration: 2s;
-    animation-timing-function: ease-out; }
+    animation: fadeInLeft 2s ease-out 1s;
+    animation-fill-mode: backwards; }
   .heading-primary--sub {
     display: block;
     font-size: 2rem;
     font-weight: 700;
     letter-spacing: 1.75rem;
-    animation: fadeInRight 2s ease-out; }
+    animation: fadeInRight 2s ease-out 1s;
+    animation-fill-mode: backwards; }
 
 .heading-secondary {
   font-size: 3.5rem;
@@ -169,7 +169,7 @@ body {
     background-color: #fff; }
 
 .btn--animated {
-  animation: fadeInBottom 1s ease-out 1.05s;
+  animation: fadeInBottom 1.45s ease-out 1.5s;
   animation-fill-mode: backwards; }
 
 .btn-text:link, .btn-text:visited {
@@ -195,14 +195,15 @@ body {
   background-position: top;
   clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
   transition: all 1.5s;
-  animation: appearence 2s ease-out .5s;
+  animation: appearence 2s ease-out;
   animation-fill-mode: backwards; }
   .header__logo_box {
     position: absolute;
     top: 3rem;
     left: 3rem; }
-  .header__log {
-    height: 3.5rem; }
+  .header__logo {
+    height: 4.5rem;
+    margin: 2.8rem; }
   .header__text-box {
     position: absolute;
     text-align: center;
