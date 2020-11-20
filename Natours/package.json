@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/SergioAndrade22/CSS#readme",
   "devDependencies": {
+    "live-server": "^1.2.1",
     "node-sass": "^5.0.0"
   },
   "dependencies": {}
