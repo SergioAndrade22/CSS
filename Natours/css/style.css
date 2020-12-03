@@ -441,7 +441,7 @@ body {
   .card__price-value {
     font-size: 6rem;
     font-weight: 100; }
-  @media (max-width: 56.25em) {
+  @media (max-width: 75em) {
     .card {
       height: auto;
       border-radius: .3rem;
@@ -639,6 +639,10 @@ body {
   opacity: 0;
   visibility: hidden;
   transition: all .3s; }
+  @media (max-width: 75em) {
+    .popup {
+      display: block;
+      text-align: center; } }
   .popup:target {
     opacity: 1;
     visibility: visible; }
@@ -673,15 +677,28 @@ body {
   .popup__left {
     width: 33.333333333%;
     display: table-cell; }
+    @media (max-width: 75em) {
+      .popup__left {
+        width: 100%;
+        display: inline-flex; } }
   .popup__right {
     width: 66.66666666667%;
     display: table-cell;
     vertical-align: middle;
     text-align: left;
     padding: 3rem 5rem; }
+    @media (max-width: 75em) {
+      .popup__right {
+        width: 100%;
+        display: inline-block; } }
   .popup__img {
     display: block;
     width: 100%; }
+    @media (max-width: 75em) {
+      .popup__img {
+        width: 50%;
+        display: flex;
+        float: left; } }
   .popup__text {
     font-size: 1.4rem;
     margin-bottom: 4rem;
@@ -695,6 +712,12 @@ body {
     -ms-hyphens: auto;
     -webkit-hyphens: auto;
     hyphens: auto; }
+  @media (max-width: 75em) {
+    .popup__btn {
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      margin-top: 2rem; } }
 
 .navigation__checkbox {
   display: none; }
