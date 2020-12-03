@@ -9,8 +9,27 @@
 html {
     // This defines the value of a rem
     font-size: 62.5%;
+
+    // as the 'phone' option set font-size: 50%, it was unnecesary
+
+    @include respond(tab-land){
+        font-size: 56.25%; //1 rem = 9px
+    }
+
+    @include respond(tab-port){
+        font-size: 50%; //1 rem = 8px
+    }
+
+    @include respond(big-desk){
+        font-size: 75%; //1rem = 12px
+    }
 }
 
 body {
     box-sizing: border-box;
+    padding: 3rem;
+
+    @include respond(tab-port){
+        padding: 0;
+    }
 }

@@ -3,9 +3,18 @@
     margin: 0 auto; // This center an element on a block 
     &:not(:last-child) { // We select, everything but the last child
         margin-bottom: $gutter-vertical;
+
+        @include respond(tab-port){
+            margin-bottom: $gutter-vertical-small;
+        }
     }
 
     @include clearfix;
+
+    @include respond(tab-port){
+        max-width: 50%;
+        padding: 0 3rem;
+    }
 
 // The [] selector, allows to select based on an attribute.
 // This '^=' means 'that begins with' in this case, every class that begins with 'col-'
@@ -16,6 +25,15 @@
 
         &:not(:last-child){
             margin-right: $gutter-horizontal;
+
+            @include respond(tab-port){
+                margin-right: 0;
+                margin-bottom: $gutter-vertical-small;
+            }
+        }
+
+        @include respond(tab-port){
+            width: 100% !important;
         }
     }
 
