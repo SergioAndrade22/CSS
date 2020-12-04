@@ -75,9 +75,22 @@
                     </div>
                     <div class="col-1-of-2">
                         <div class="composition">
-                            <img src="./img/nat-1-large.jpg" alt="Photo1" class="composition__photo composition__photo--p1">
-                            <img src="./img/nat-2-large.jpg" alt="Photo2" class="composition__photo composition__photo--p2">
-                            <img src="./img/nat-3-large.jpg" alt="Photo3" class="composition__photo composition__photo--p3">
+                            <!-- Resolution Switching: when using several srcset=[image viewportwidth, ] and then 
+                                 combining with sizes=[mediaquery size, ..., mmm px ], allows the browser to know what image to render-->
+                            <img class="composition__photo composition__photo--p1" srcset="img/nat-1.jpg 300w, img/nat-1-large.jpg 1000w" alt="Photo 1" 
+                                    sizes="(max-widht: 900px) 20vw, (max-width: 600px) 30vw, 300px" src="./img/nat-1-large.jpg">
+                            <img class="composition__photo composition__photo--p2" srcset="img/nat-2.jpg 300w, img/nat-2-large.jpg 1000w" alt="Photo 2" 
+                                    sizes="(max-widht: 900px) 20vw, (max-width: 600px) 30vw, 300px" src="./img/nat-2-large.jpg">
+                            <img class="composition__photo composition__photo--p3" srcset="img/nat-3.jpg 300w, img/nat-3-large.jpg 1000w" alt="Photo 3" 
+                                    sizes="(max-widht: 900px) 20vw, (max-width: 600px) 30vw, 300px" src="./img/nat-3-large.jpg">
+                            
+
+                            <!-- 
+                                Old non-responsive version
+                                <img src="./img/nat-1-large.jpg" alt="Photo1" class="composition__photo composition__photo--p1">
+                                <img src="./img/nat-2-large.jpg" alt="Photo2" class="composition__photo composition__photo--p2">
+                                <img src="./img/nat-3-large.jpg" alt="Photo3" class="composition__photo composition__photo--p3"> 
+                            -->
                         </div>
                     </div>
                 </div>
@@ -272,7 +285,10 @@
                     <div class="story">
 
                         <figure class="story__shape">
-                            <img class="story__image" src="./img/nat-8.jpg" alt="Person on a tour">
+                            <picture>
+                                <source class="story__image" srcset="./img/nat-8-small.jpg" media="(max-width: 56.25em)" alt="Person on a tour">
+                                <img class="story__image" src="./img/nat-8.jpg" alt="Person on a tour">
+                            </picture>
                             <figcaption class="story__caption">
                                 Mary Smith
                             </figcaption>
@@ -294,7 +310,10 @@
                     <div class="story">
 
                         <figure class="story__shape">
-                            <img class="story__image" src="./img/nat-9.jpg" alt="Person on a tour">
+                            <picture>
+                                <source class="story__image" srcset="./img/nat-9-small.jpg" media="(max-width: 56.25em)" alt="Person on a tour">
+                                <img class="story__image" src="./img/nat-9.jpg" alt="Person on a tour">
+                            </picture>
                             <figcaption class="story__caption">
                                 Jake Willson
                             </figcaption>
@@ -376,7 +395,14 @@
         <footer class="footer">
 
             <div class="footer__logo-box">
-                <img class="footer__logo" src="./img/logo-green-2x.png" alt="Full logo">
+                <!-- Art direction: this combination picture > source + img, is used for art change directive, source teste the "media" attribute,
+                     normally a media query, and tryes to display, if fails, the img set as fallback is displayed -->
+                <!-- Density switching: using srcset[img densitydescriptor, ] allows the browser to choose the img to render
+                     this is used on responsive image for "Resolution Changes" -->
+                <picture class="footer__logo">
+                    <source srcset="img/logo-green-small-1x.png 1x, img/logo-green-small-2x.png 2x" media="(max-width: 37.5em)">
+                    <img srcset="/img/logo-green-1x.png 1x, ./img/logo-green-2x.png 2x" alt="Full logo" src="/img/logo-green-2x.png">
+                </picture>
             </div>
 
             <div class="row">
@@ -410,8 +436,14 @@
             <div class="popup__content">
 
                 <div class="popup__left">
-                    <img src="img/nat-8.jpg" alt="Tour photo" class="popup__img">
-                    <img src="img/nat-9.jpg" alt="Tour photo" class="popup__img">
+                    <picture>
+                        <source class="popup__img" srcset="./img/nat-8-small.jpg" media="(max-width: 56.25em)" alt="Person on a tour">
+                        <img class="popup__img" src="./img/nat-8.jpg" alt="Person on a tour">
+                    </picture>
+                    <picture>
+                        <source class="popup__img" srcset="./img/nat-9-small.jpg" media="(max-width: 56.25em)" alt="Person on a tour">
+                        <img class="popup__img" src="./img/nat-9.jpg" alt="Person on a tour">
+                    </picture>
                 </div>
 
                 <div class="popup__right">
