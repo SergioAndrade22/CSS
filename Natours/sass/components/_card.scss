@@ -13,6 +13,7 @@
         top: 0;
         left: 0;
         width: 100%;
+        -webkit-backface-visibility: hidden;
         backface-visibility: hidden;
         border-radius: .3rem;
         box-shadow: 0 1.5rem 4rem rgba($color-black, .15);
@@ -51,8 +52,8 @@
     &__picture{
         background-size: cover;
         height: 21rem;
-        background-blend-mode: screen;
         -webkit-clip-path: polygon(0 0, 100% 0, 100% 82%, 0 100%);
+        background-blend-mode: screen;
         clip-path: polygon(0 0, 100% 0, 100% 82%, 0 100%);
         border-top-left-radius: .3rem;
         border-top-right-radius: .3rem;
@@ -147,7 +148,9 @@
         font-weight: 100;
     }
 
-    @include respond(tab-land){
+    // @include respond(tab-port){
+    @media only screen and (max-width: 56.25em),
+            only screen and (hover: none){ //opposite of hover:none is hover:hover
         height: auto;
         border-radius: .3rem;
         background-color: $color-white;
