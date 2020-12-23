@@ -21,7 +21,9 @@
   * 7-1 Pattern for style sheets
 
 ## NPM
-  * Run 'npm install', under Natour/ folder, to get the node-sass compiler
-    * Run 'node run compile:sass', under Natour/ folder,  to launch the script watching for changes and automatically update
-  * Run 'sudo npm -g i live-server' to install live-server globally on your pc
-    * Run 'live-server', under Natour/ folder, to run the server automatically on your http://localhost:8080 for auto-refresh on changes
+  * Run 'npm install', under each folder, to get every dependency needed
+  * Install live-server:
+     * Run 'sudo npm -g i live-server' to install live-server globally on your pc, or
+     * Run 'npm i live-server' to install it locally on the project
+  * Run 'npm run start' to start two processes on the terminal, one watching for changes on styles and auto-recompiling and another to start live-server on your default port
+  * Run 'npm run build:css' to generate a compiled style.css ready for production
