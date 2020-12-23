@@ -1,0 +1,53 @@
+.container{
+  width: 90%;
+  margin: 30px auto;
+  background-color: #ddd;
+  
+  display: grid;
+
+  grid-template-rows: repeat(2, minmax(150px, min-content));
+  grid-auto-rows: minmax(150px, min-content);
+  /*
+  auto-fill automatically creates as many of the type as you can create based on the specified size and the size of the container
+  grid-template-columns: repeat(auto-fill, 100px);
+  */
+  /*
+  whereas auto-fit, creates as much as it can, then fill all that are needed for all objects, then collapses the ones that are empty
+  */
+  /*
+  if we then use the minmax function, in conjunction with 1fr for the max, we can make it take all the space of the container
+  */
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  
+  .item{
+    padding: 10px;
+    color: white;
+    font-family: sans-serif;
+    font-size: 30px;
+    
+    &--1{
+      background-color: orangered;
+    }
+    &--2{
+      background-color: yellowgreen;
+    }
+    &--3{
+      background-color: blueviolet;
+    }
+    &--4{
+      background-color: palevioletred;
+    }
+    &--5{
+      background-color: royalblue;
+    }
+    &--6{
+      background-color: goldenrod;
+    }
+    &--7{
+      background-color: crimson;
+    }
+    &--8{
+      background-color: darkslategray;
+    }
+  }
+}

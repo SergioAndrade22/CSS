@@ -1,0 +1,96 @@
+.container{
+  background-color: #eee;
+  width: 1000px;
+  margin: 30px auto;
+  
+  display: grid;
+  /* Used for individual different sizes.
+  grid-template-rows: 150px 150px;
+  grid-template-columns: 150px 150px 150px;
+  */
+  // Following are used for multiple same size
+  grid-template-rows: repeat(2, 150px);
+ // grid-template-columns: repeat(3, 150px);
+  /*
+    Both techniques above can be combined to generate something like:
+  grid-template-rows: repeat(2, 150px) 300px;
+  or
+  grid-template-rows: repeat(2, 15%) repeat(3, 250px);
+  */
+  
+  /*
+    fr stands for "fractional unit" and 1fr represents "All the available space left"
+  */
+  // grid-template-columns: repeat(2, 150px) 1fr; the two first column take 150px, the last takes the reminder
+  // grid-template-columns: repeat(3, 1fr); all of them have the same size
+  // grid-template-columns: 1fr 2fr 1fr; the second one is twice as big as the first and last
+  // grid-template-columns: 50% 1fr 1fr; in this case the 50% represents the 50% of the total container width, without considering the gap
+  
+  grid-template-columns: repeat(3, 1fr);
+  
+  
+  /* For individual gap definition
+  grid-row-gap: 30px; 
+  grid-column-gap: 50px;
+  */
+  // For all gap definition
+   grid-gap: 30px;
+  
+  
+}
+
+.item {
+  padding: 20px;
+  font-size: 30px;
+  font-family: sans-serif;
+  color: white;
+  
+  &--1{
+    background-color: orange;
+    /* Longer way, defining each start-end
+    grid-row-start: 2;
+    grid-row-end: 3;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    */
+    // shorter one line definition
+    grid-row: 2 / 3;
+    grid-column: 2 / 3;
+  }
+  
+  &--2{
+    background-color: yellowgreen;
+    // grid-column: 2 / span 2; we can use span to specify the number of cell an item should occupy
+    grid-column: 2 / -1; // -1 represents the end of the table
+  }
+  
+  &--3{
+    background-color: blueviolet;
+    grid-column: 1 / 3; // Every element will occupy end - start cells
+    
+    /*
+      If we do not specify the exact row we want the element to be, as we have already another element on one of the cells, it will jump down one row.
+      After adding the following instruction, the cell in row: 2/3 and column 2/3 has the orange element and half the violet element in it, one on top of the other.
+    */
+    grid-row: 2/3
+  }
+  
+  &--4{
+    background-color: palevioletred;
+  }
+  
+  &--5{
+    background-color: royalblue;
+    /* we can shorten this further
+    grid-row: 1 / 2;
+    grid-column: 3 / 4;
+    */
+    // grid-area: row_start/ column_start / row_end / column_end
+    grid-area: 1 / 3 / 2 / 4;
+  }
+  
+  &--6{
+    background-color: goldenrod;
+    grid-area: 1 / 2 / 2 / 3;
+  }
+}

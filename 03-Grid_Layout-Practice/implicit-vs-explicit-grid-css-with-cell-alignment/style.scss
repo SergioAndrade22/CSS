@@ -1,0 +1,47 @@
+.container{
+  width: 1000px;
+  margin: 30px auto;
+  background-color: #ddd;
+  
+  display: grid;
+  grid-template-rows: repeat(2, 150px);
+  grid-template-columns: repeat(2, 1fr);
+  /*
+    Our first four elements would take these four places taking the "explicit grid", the one defined in our code. The rest of the elements would be fit in an automatic built by CSS, that's the "implicit grid".
+  */
+  grid-gap: 30px;
+  
+  //Using auto allows you to control the auto-generated rows/columns to edit them  
+  grid-auto-flow: row dense; //this property controls how the automatic placement would be done. Adding the "dense" keyword, prevents the automatic grid generation from creating wholes on the grid.
+  grid-auto-rows: 80px;
+  grid-auto-columns: .5fr;
+  
+  //ALIGNMENT
+  justify-items: center; //accross the row axis (horizontal)
+  align-items: center; //accross the column axis (vertical)
+  
+  .item{
+    padding: 10px;
+    color: white;
+    font-family: sans-serif;
+    font-size: 30px;
+    background-color: orangered;
+    
+    &--4{
+      background-color: crimson;
+      grid-row: 2 / span 3;
+      // align-self: start;
+      // justify-self: start;
+    }
+    
+     &--6{
+      background-color: lightcoral;
+      grid-row: 2 / span 2;
+    }
+    
+    &--7{
+      background-color: crimson;
+      grid-column: 1 / -1;
+    }
+  }
+}
